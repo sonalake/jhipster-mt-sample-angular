@@ -1,0 +1,12 @@
+entity Company {
+	name String
+}
+
+entity Channels {
+	name String
+}
+
+
+relationship ManyToMany{
+	Channels{User(firstName)} to User
+}

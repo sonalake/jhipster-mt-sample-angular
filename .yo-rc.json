@@ -1,0 +1,62 @@
+{
+  "generator-jhipster-multitenancy": {
+    "promptValues": {
+      "packageName": "com.companyslack.app"
+    },
+    "tenantChangelogDate": "20191209093712",
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "monolith",
+    "baseName": "sample_multitenancy_app_angular",
+    "packageName": "com.companyslack.app",
+    "packageFolder": "com/companyslack/app",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "YTc1NTkxOTk1NTJhZDg5NTkyOGNmZDA1M2UyMzRiYWE3YmVkYTZmYmMyMDMyMTg2YjVlOWNjMzg1Njg2MTI3ZjBjOTc3OWNjYzgzNzU3MjgwOTI2MjY0NTIxN2FlOTM4MTZjNDQ3ZWIwMDIwYzBmOGNhNWI1MGU2ZWI2ZTJkMjQ=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "tenantName": "Company"
+  },
+  "generator-jhipster": {
+    "promptValues": {
+      "nativeLanguage": "en"
+    },
+    "jhipsterVersion": "6.3.1",
+    "applicationType": "monolith",
+    "baseName": "sample_multitenancy_app_angular",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-multitenancy",
+        "version": "2.1.1"
+      }
+    ],
+    "enableTranslation": true,
+    "clientPackageManager": "npm",
+    "nativeLanguage": "en",
+    "languages": ["en"],
+    "blueprints": [
+      {
+        "name": "generator-jhipster-multitenancy",
+        "version": "2.1.1"
+      }
+    ]
+  }
+}
