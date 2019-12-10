@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-channels-heading" jhiTranslate="sampleMultitenancyAppAngularApp.channels.home.createOrEditLabel">Create or edit a Channels</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="sampleMultitenancyAppAngularApp.channels.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="sampleMultitenancyAppAngularApp.channels.user" for="field_users">User</label>
+                    <select class="form-control" id="field_users" multiple name="users" formControlName="users">
+                        <option [ngValue]="getSelected(editForm.get('users').value, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.firstName}}</option>
+                    </select>
+                </div>
+                <div class="form-group" *ngIf="!currentAccount.company">
+                    <label class="form-control-label" jhiTranslate="sampleMultitenancyAppAngularApp.channels.company" for="field_company">Company</label>
+                    <select class="form-control" id="field_company" name="company" formControlName="company">
+                        <option *ngIf="!editForm.get('company').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="companyOption.id === editForm.get('company').value?.id ? editForm.get('company').value : companyOption" *ngFor="let companyOption of companies; trackBy: trackCompanyById">{{companyOption.id}}</option>
+                    </select>
+                </div>
+                <div *ngIf="!currentAccount.company && editForm.get('company').invalid && (editForm.get('company').dirty || editForm.get('company').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('company').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

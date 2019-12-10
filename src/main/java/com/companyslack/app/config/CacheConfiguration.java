@@ -43,6 +43,8 @@ public class CacheConfiguration {
             createCache(cm, com.companyslack.app.domain.Authority.class.getName());
             createCache(cm, com.companyslack.app.domain.User.class.getName() + ".authorities");
             createCache(cm, com.companyslack.app.domain.Company.class.getName());
+            createCache(cm, com.companyslack.app.domain.Channels.class.getName());
+            createCache(cm, com.companyslack.app.domain.Channels.class.getName() + ".users");
             // jhipster-needle-ehcache-add-entry
         };
     }

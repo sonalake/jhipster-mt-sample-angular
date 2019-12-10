@@ -29,7 +29,8 @@
     "clientFramework": "angularX",
     "clientTheme": "none",
     "clientThemeVariant": "",
-    "tenantName": "Company"
+    "tenantName": "Company",
+    "tenantAwareEntities": ["Channels"]
   },
   "generator-jhipster": {
     "promptValues": {

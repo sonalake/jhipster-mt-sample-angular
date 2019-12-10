@@ -3,28 +3,28 @@ import { of } from 'rxjs';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 
 import { SampleMultitenancyAppAngularTestModule } from '../../../test.module';
-import { CompanyComponent } from 'app/entities/company/company.component';
-import { CompanyService } from 'app/entities/company/company.service';
-import { Company } from 'app/shared/model/company.model';
+import { ChannelsComponent } from 'app/entities/channels/channels.component';
+import { ChannelsService } from 'app/entities/channels/channels.service';
+import { Channels } from 'app/shared/model/channels.model';
 
 describe('Component Tests', () => {
-  describe('Company Management Component', () => {
-    let comp: CompanyComponent;
-    let fixture: ComponentFixture<CompanyComponent>;
-    let service: CompanyService;
+  describe('Channels Management Component', () => {
+    let comp: ChannelsComponent;
+    let fixture: ComponentFixture<ChannelsComponent>;
+    let service: ChannelsService;
 
     beforeEach(() => {
       TestBed.configureTestingModule({
         imports: [SampleMultitenancyAppAngularTestModule],
-        declarations: [CompanyComponent],
+        declarations: [ChannelsComponent],
         providers: []
       })
-        .overrideTemplate(CompanyComponent, '')
+        .overrideTemplate(ChannelsComponent, '')
         .compileComponents();
 
-      fixture = TestBed.createComponent(CompanyComponent);
+      fixture = TestBed.createComponent(ChannelsComponent);
       comp = fixture.componentInstance;
-      service = fixture.debugElement.injector.get(CompanyService);
+      service = fixture.debugElement.injector.get(ChannelsService);
     });
 
     it('Should call load all on init', () => {
@@ -33,7 +33,7 @@ describe('Component Tests', () => {
       spyOn(service, 'query').and.returnValue(
         of(
           new HttpResponse({
-            body: [new Company(123)],
+            body: [new Channels(123)],
             headers
           })
         )
@@ -44,7 +44,7 @@ describe('Component Tests', () => {
 
       // THEN
       expect(service.query).toHaveBeenCalled();
-      expect(comp.companies[0]).toEqual(jasmine.objectContaining({ id: 123 }));
+      expect(comp.channels[0]).toEqual(jasmine.objectContaining({ id: 123 }));
     });
   });
 });

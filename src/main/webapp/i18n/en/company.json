@@ -15,7 +15,8 @@
       },
       "detail": {
         "title": "Company"
-      }
+      },
+      "name": "Name"
     }
   }
 }

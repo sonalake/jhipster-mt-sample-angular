@@ -16,7 +16,8 @@ export class CompanyUpdateComponent implements OnInit {
   isSaving: boolean;
 
   editForm = this.fb.group({
-    id: []
+    id: [],
+    name: []
   });
 
   constructor(protected companyService: CompanyService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -30,7 +31,8 @@ export class CompanyUpdateComponent implements OnInit {
 
   updateForm(company: ICompany) {
     this.editForm.patchValue({
-      id: company.id
+      id: company.id,
+      name: company.name
     });
   }
 
@@ -51,7 +53,8 @@ export class CompanyUpdateComponent implements OnInit {
   private createFromForm(): ICompany {
     return {
       ...new Company(),
-      id: this.editForm.get(['id']).value
+      id: this.editForm.get(['id']).value,
+      name: this.editForm.get(['name']).value
     };
   }
 

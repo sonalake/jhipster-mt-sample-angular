@@ -1,0 +1,29 @@
+{
+    "name": "Channels",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "channels",
+            "relationshipName": "user",
+            "otherEntityField": "firstName",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20191209094217",
+    "entityTableName": "channels",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "tenantAware": true
+}

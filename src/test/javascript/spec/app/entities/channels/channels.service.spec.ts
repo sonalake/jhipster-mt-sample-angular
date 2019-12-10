@@ -1,15 +1,15 @@
 import { TestBed, getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { take, map } from 'rxjs/operators';
-import { CompanyService } from 'app/entities/company/company.service';
-import { ICompany, Company } from 'app/shared/model/company.model';
+import { ChannelsService } from 'app/entities/channels/channels.service';
+import { IChannels, Channels } from 'app/shared/model/channels.model';
 
 describe('Service Tests', () => {
-  describe('Company Service', () => {
+  describe('Channels Service', () => {
     let injector: TestBed;
-    let service: CompanyService;
+    let service: ChannelsService;
     let httpMock: HttpTestingController;
-    let elemDefault: ICompany;
+    let elemDefault: IChannels;
     let expectedResult;
     beforeEach(() => {
       TestBed.configureTestingModule({
@@ -17,10 +17,10 @@ describe('Service Tests', () => {
       });
       expectedResult = {};
       injector = getTestBed();
-      service = injector.get(CompanyService);
+      service = injector.get(ChannelsService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Company(0, 'AAAAAAA');
+      elemDefault = new Channels(0, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -36,7 +36,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: elemDefault });
       });
 
-      it('should create a Company', () => {
+      it('should create a Channels', () => {
         const returnedFromService = Object.assign(
           {
             id: 0
@@ -45,7 +45,7 @@ describe('Service Tests', () => {
         );
         const expected = Object.assign({}, returnedFromService);
         service
-          .create(new Company(null))
+          .create(new Channels(null))
           .pipe(take(1))
           .subscribe(resp => (expectedResult = resp));
         const req = httpMock.expectOne({ method: 'POST' });
@@ -53,7 +53,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should update a Company', () => {
+      it('should update a Channels', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB'
@@ -71,7 +71,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toMatchObject({ body: expected });
       });
 
-      it('should return a list of Company', () => {
+      it('should return a list of Channels', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB'
@@ -92,7 +92,7 @@ describe('Service Tests', () => {
         expect(expectedResult).toContainEqual(expected);
       });
 
-      it('should delete a Company', () => {
+      it('should delete a Channels', () => {
         service.delete(123).subscribe(resp => (expectedResult = resp.ok));
 
         const req = httpMock.expectOne({ method: 'DELETE' });

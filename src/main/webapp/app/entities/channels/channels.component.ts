@@ -5,36 +5,36 @@ import { Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
-import { ICompany } from 'app/shared/model/company.model';
+import { IChannels } from 'app/shared/model/channels.model';
 import { AccountService } from 'app/core/auth/account.service';
-import { CompanyService } from './company.service';
+import { ChannelsService } from './channels.service';
 
 @Component({
-  selector: 'jhi-company',
-  templateUrl: './company.component.html'
+  selector: 'jhi-channels',
+  templateUrl: './channels.component.html'
 })
-export class CompanyComponent implements OnInit, OnDestroy {
-  companies: ICompany[];
+export class ChannelsComponent implements OnInit, OnDestroy {
+  channels: IChannels[];
   currentAccount: any;
   eventSubscriber: Subscription;
 
   constructor(
-    protected companyService: CompanyService,
+    protected channelsService: ChannelsService,
     protected jhiAlertService: JhiAlertService,
     protected eventManager: JhiEventManager,
     protected accountService: AccountService
   ) {}
 
   loadAll() {
-    this.companyService
+    this.channelsService
       .query()
       .pipe(
-        filter((res: HttpResponse<ICompany[]>) => res.ok),
-        map((res: HttpResponse<ICompany[]>) => res.body)
+        filter((res: HttpResponse<IChannels[]>) => res.ok),
+        map((res: HttpResponse<IChannels[]>) => res.body)
       )
       .subscribe(
-        (res: ICompany[]) => {
-          this.companies = res;
+        (res: IChannels[]) => {
+          this.channels = res;
         },
         (res: HttpErrorResponse) => this.onError(res.message)
       );
@@ -45,19 +45,19 @@ export class CompanyComponent implements OnInit, OnDestroy {
     this.accountService.identity().then(account => {
       this.currentAccount = account;
     });
-    this.registerChangeInCompanies();
+    this.registerChangeInChannels();
   }
 
   ngOnDestroy() {
     this.eventManager.destroy(this.eventSubscriber);
   }
 
-  trackId(index: number, item: ICompany) {
+  trackId(index: number, item: IChannels) {
     return item.id;
   }
 
-  registerChangeInCompanies() {
-    this.eventSubscriber = this.eventManager.subscribe('companyListModification', response => this.loadAll());
+  registerChangeInChannels() {
+    this.eventSubscriber = this.eventManager.subscribe('channelsListModification', response => this.loadAll());
   }
 
   protected onError(errorMessage: string) {

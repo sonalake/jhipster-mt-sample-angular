@@ -37,7 +37,7 @@ public class CompanyAspect {
      * Filter users based on which company the user is associated with.
      * Skip filter if user has no company
      */
-    @Before("execution(* com.companyslack.app.service.UserService.*(..))")
+    @Before("execution(* com.companyslack.app.service.UserService.*(..)) || execution(* com.companyslack.app.service.ChannelsService.*(..))")
     public void beforeExecution() throws Throwable {
         Optional<String> login = SecurityUtils.getCurrentUserLogin();
 

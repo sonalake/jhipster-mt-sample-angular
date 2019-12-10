@@ -1,0 +1,24 @@
+{
+  "sampleMultitenancyAppAngularApp": {
+    "channels": {
+      "home": {
+        "title": "Channels",
+        "createLabel": "Create a new Channels",
+        "createOrEditLabel": "Create or edit a Channels",
+        "notFound": "No Channels found"
+      },
+      "created": "A new Channels is created with identifier {{ param }}",
+      "updated": "A Channels is updated with identifier {{ param }}",
+      "deleted": "A Channels is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Channels {{ id }}?"
+      },
+      "detail": {
+        "title": "Channels"
+      },
+      "name": "Name",
+      "user": "User",
+      "company": "Company"
+    }
+  }
+}
